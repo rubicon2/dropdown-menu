@@ -2,6 +2,8 @@ import './dropdown.css';
 import DropdownMenuItem from './dropdownMenuItem';
 
 export default class DropdownMenu {
+  static #mouseLeaveTimeoutMillis = 350;
+
   constructor(menuName, ...dropdownLinks) {
     this.element = document.createElement('div');
     this.element.classList.add('dropdown-menu');
@@ -10,10 +12,18 @@ export default class DropdownMenu {
     this.menuItemElements = this.#createMenuItems(dropdownLinks);
     this.#hideMenu();
 
-    // If function is triggered by element events, must wrap in arrow function
-    // Otherwise 'this' will refer to html element and not the object created by this constructor/class.
+    this.timeout = null;
+
+    // If function is triggered by element events, must wrap in arrow function.
+    // Otherwise, 'this' will refer to html element and not the object created by this constructor/class.
     this.element.onmouseenter = () => this.#showMenu();
-    this.element.onmouseleave = () => this.#hideMenu();
+    // These nested arrow functions are ugly, but don't want to put the timeout in the #hideMenu function.
+    // Also need to store a ref to the timeout so it can be cleared if onmouseenter is triggered before timeout goes off.
+    this.element.onmouseleave = () => {
+      this.timeout = setTimeout(() => {
+        this.#hideMenu();
+      }, DropdownMenu.#mouseLeaveTimeoutMillis);
+    };
   }
 
   #createMenuCover(menuName) {
@@ -34,6 +44,7 @@ export default class DropdownMenu {
   }
 
   #showMenu() {
+    clearTimeout(this.timeout);
     for (let i = 0; i < this.menuItemElements.length; i += 1) {
       this.menuItemElements[i].style.transform = `translate(0)`;
     }
