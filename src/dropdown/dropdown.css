@@ -7,16 +7,16 @@
 }
 
 .dropdown-menu-item {
-  position: relative;
-  top: 0;
+  position: absolute;
   background-color: teal;
 
   padding: 1rem;
-  width: inherit;
+  /* width: inherit; */
 
   transition: all 500ms;
 }
 
 .dropdown-menu-cover {
+  position: relative;
   z-index: 1;
 }

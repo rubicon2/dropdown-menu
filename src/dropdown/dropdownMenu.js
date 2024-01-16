@@ -46,14 +46,14 @@ export default class DropdownMenu {
   #showMenu() {
     clearTimeout(this.timeout);
     for (let i = 0; i < this.menuItemElements.length; i += 1) {
-      this.menuItemElements[i].style.transform = `translate(0)`;
+      this.menuItemElements[i].style.transform =
+        `translate(0, ${(i + 1) * 100}%)`;
     }
   }
 
   #hideMenu() {
     for (let i = 0; i < this.menuItemElements.length; i += 1) {
-      this.menuItemElements[i].style.transform =
-        `translate(0, ${(i + 1) * -100}%)`;
+      this.menuItemElements[i].style.transform = `translate(0)`;
     }
   }
 }
