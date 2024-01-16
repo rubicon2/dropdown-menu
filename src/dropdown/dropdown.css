@@ -1,0 +1,22 @@
+.dropdown-menu {
+  background-color: pink;
+
+  display: grid;
+  align-items: stretch;
+  text-align: center;
+}
+
+.dropdown-menu-item {
+  position: relative;
+  top: 0;
+  background-color: teal;
+
+  padding: 1rem;
+  width: inherit;
+
+  transition: all 500ms;
+}
+
+.dropdown-menu-cover {
+  z-index: 1;
+}
