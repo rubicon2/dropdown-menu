@@ -28,7 +28,7 @@ export default class DropdownMenu {
 
   #createMenuCover(menuName) {
     const coverElement = document.createElement('div');
-    coverElement.classList.add('dropdown-menu-item', 'dropdown-menu-cover');
+    coverElement.classList.add('dropdown-menu-cover');
     coverElement.innerText = menuName;
     this.element.appendChild(coverElement);
     return coverElement;

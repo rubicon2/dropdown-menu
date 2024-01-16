@@ -11,7 +11,7 @@ function CreateLink(link) {
 export default class DropdownMenuItem {
   constructor(link) {
     this.element = document.createElement('div');
-    this.element.classList.add('dropdown-menu-item');
+    this.element.classList.add('dropdown-menu-option');
     this.element.appendChild(CreateLink(link));
   }
 }

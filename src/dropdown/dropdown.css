@@ -6,17 +6,18 @@
   text-align: center;
 }
 
-.dropdown-menu-item {
-  position: absolute;
+.dropdown-menu-option,
+.dropdown-menu-cover {
   background-color: teal;
-
   padding: 1rem;
-  /* width: inherit; */
-
-  transition: all 500ms;
 }
 
 .dropdown-menu-cover {
   position: relative;
   z-index: 1;
+}
+
+.dropdown-menu-option {
+  position: absolute;
+  transition: all 500ms;
 }
